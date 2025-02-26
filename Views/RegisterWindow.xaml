@@ -1,0 +1,30 @@
+﻿<Window x:Class="设备管理系统.Views.RegisterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:设备管理系统.Views" 
+        xmlns:ViewModels="clr-namespace:设备管理系统.ViewModels"
+        mc:Ignorable="d"
+        Title="新用户注册" Height="450" Width="800">
+    <Window.DataContext>
+        <ViewModels:RegisterViewModel/>
+    </Window.DataContext>
+    
+    <Canvas Background="{StaticResource BgRrush}">
+        <TextBox Canvas.Left="164" TextWrapping="Wrap" Text="{Binding person.Name}" Canvas.Top="159" Width="236" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30"/>
+        <TextBox Canvas.Left="164" TextWrapping="Wrap" Text="{Binding person.Password}" Canvas.Top="204" Width="236" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30"/>
+        <Label Content="用户名" Canvas.Left="96" Canvas.Top="160" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label Content="密码" Canvas.Left="96" Canvas.Top="206" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button Background="LightPink" Content="注   册" 
+            Command="{Binding RegisterCommand}"
+            Canvas.Left="164" Canvas.Top="354" HorizontalAlignment="Center" 
+            VerticalAlignment="Top" Width="236" Height="30"/>
+        <Label Content="新用户注册" FontSize="50" Canvas.Top="32" Canvas.Left="89"/>
+        <!--<TextBox Canvas.Left="164" TextWrapping="Wrap" Text="{Binding Student.City}" Canvas.Top="253" Width="236" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Label Content="城市" Canvas.Left="96" Canvas.Top="254" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Label Content="性别" Canvas.Left="96" Canvas.Top="305" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <RadioButton Content="男" Canvas.Left="164" Canvas.Top="316" IsChecked="{Binding Boy}"/>
+        <RadioButton Content="女" Canvas.Left="237" Canvas.Top="316" IsChecked="{Binding Girl}" />-->
+    </Canvas>
+</Window>
