@@ -6,5 +6,7 @@
     <converter:RoleToTextConverter x:Key="RoleToTextConverter"/>
     <converter:SexToTextConverter x:Key="SexToTextConverter"/>
     <converter:IsLessThanConverter x:Key="IsLessThanConverter"/>
-
+    <converter:PictureButtonContentConverter x:Key="PictureButtonContentConverter"/>
+    <converter:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+    <converter:PictureToolTipConverter x:Key="PictureToolTipConverter"/>
 </ResourceDictionary>

@@ -161,15 +161,14 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <!--将当前行的数据上下文（即当前行的数据项）作为命令参数传递给 UpdateCommand。-->
                                             <Button Content="修改" 
-                                            Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=DataContext.UpdateCommand}"                                                  
-                                            CommandParameter="{Binding}" 
-                                            Style="{StaticResource DataGridButtonStyle}"/>
+                                                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=DataContext.UpdateCommand}"
+                                                CommandParameter="{Binding}"
+                                                Style="{StaticResource DataGridButtonStyle}"/>
                                             <Button Content="删除" 
-                                            Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=DataContext.DeleteCommand}"
-                                            CommandParameter="{Binding}"
-                                            Style="{StaticResource DataGridButtonStyle}"/>
+                                                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=DataContext.DeleteCommand}"
+                                                CommandParameter="{Binding}"
+                                                Style="{StaticResource DataGridButtonStyle}"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>

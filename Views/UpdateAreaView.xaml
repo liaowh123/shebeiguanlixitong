@@ -4,13 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:设备管理系统.Views" 
-             xmlns:viewmodels="clr-namespace:设备管理系统.ViewModels"
+             xmlns:viewmodels="clr-namespace:设备管理系统.ViewModels"            
              mc:Ignorable="d" 
              Width="500" Height="300">
+    
     <UserControl.DataContext>
         <viewmodels:UpdateAreaViewModel/>
     </UserControl.DataContext>
+    
     <Canvas Background="{StaticResource BgRrush}">
+        
         <Label Content="输入厂区区域" FontSize="50" Canvas.Top="32" Canvas.Left="89"/>
         <TextBox Canvas.Left="164" TextWrapping="Wrap" Text="{Binding Area.Name,UpdateSourceTrigger=PropertyChanged}" Canvas.Top="159" Width="236" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30"/>
         <Label Content="名称" Canvas.Left="96" Canvas.Top="160" HorizontalAlignment="Left" VerticalAlignment="Top"/>

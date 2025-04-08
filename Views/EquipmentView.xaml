@@ -24,6 +24,7 @@
             <DockPanel>
                 <TextBlock DockPanel.Dock="Left" Margin="25 0 0 0 " Text="设备管理" FontSize="18" Foreground="#30394A" VerticalAlignment="Center"/>
                 <Button Command="{Binding InsertCommand}" Content="+ 新增设备" HorizontalAlignment="Right" Style="{StaticResource ButtonBlueStyle}" Margin="0 0 28 0"/>
+                
             </DockPanel>
         </Border>
         <Border Grid.Row="1">

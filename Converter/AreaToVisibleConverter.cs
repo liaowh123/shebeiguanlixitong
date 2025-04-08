@@ -12,7 +12,7 @@ namespace 设备管理系统.Converter
 {
     public class AreaToVisibleConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)//
         {
             var result = Visibility.Visible;
             if (value == null) return result;

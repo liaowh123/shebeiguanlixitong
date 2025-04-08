@@ -69,6 +69,9 @@
     <Reference Include="Costura, Version=6.0.0.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
       <HintPath>packages\Costura.Fody.6.0.0\lib\netstandard2.0\Costura.dll</HintPath>
     </Reference>
+    <Reference Include="HandyControl, Version=3.5.1.0, Culture=neutral, PublicKeyToken=45be8712787a1e5b, processorArchitecture=MSIL">
+      <HintPath>packages\HandyControl.3.5.1\lib\net472\HandyControl.dll</HintPath>
+    </Reference>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
     </Reference>
@@ -196,6 +199,9 @@
     <Compile Include="BLL\SpareService.cs" />
     <Compile Include="Converter\AreaToVisibleConverter.cs" />
     <Compile Include="Converter\IsLessThanConverter.cs" />
+    <Compile Include="Converter\NullToVisibilityConverter.cs" />
+    <Compile Include="Converter\PictureButtonContentConverter.cs" />
+    <Compile Include="Converter\PictureToolTipConverter.cs" />
     <Compile Include="Helper\CopyHelper.cs" />
     <Compile Include="Helper\ExportHelper.cs" />
     <Compile Include="Helper\Marker.cs" />
@@ -467,7 +473,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="设备管理系统_TemporaryKey.pfx" />
     <Resource Include="Fonts\FontAwesome.otf" />
     <None Include="Fonts\FontAwesome文档.pdf" />
     <None Include="packages.config" />

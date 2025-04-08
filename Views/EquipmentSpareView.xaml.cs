@@ -23,6 +23,7 @@ namespace 设备管理系统.Views
         public EquipmentSpareView()
         {
             InitializeComponent();
+          
         }
     }
 }

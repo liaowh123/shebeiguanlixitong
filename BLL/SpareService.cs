@@ -65,7 +65,7 @@ namespace 设备管理系统.BLL
         {
             if (entity == null) { return -1; }
 
-            string sql = @"Update Spare set MaterialCode = @MaterialCode,Name = @Name,Brand = @Brand,Specification = @Specification,SpareNumber = @SpareNumber,First_level = @First_level,Second_level = @Second_level,Third_level = @Third_level Where Id = @Id";
+            string sql = @"Update Spare set MaterialCode = @MaterialCode,Name = @Name,Brand = @Brand,Specification = @Specification,SpareNumber = @SpareNumber,First_level = @First_level,Second_level = @Second_level,Third_level = @Third_level ,Picture = @Picture Where Id = @Id";
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@Id",entity.Id),
@@ -76,7 +76,8 @@ namespace 设备管理系统.BLL
                 new SqlParameter("@SpareNumber",entity.SpareNumber),
                 new SqlParameter("@First_level",entity.First_level),
                 new SqlParameter("@Second_level",entity.Second_level),
-                new SqlParameter("@Third_level",entity.Third_level),              
+                new SqlParameter("@Third_level",entity.Third_level),
+                new SqlParameter("@Picture",entity.Picture),
             };
             int count = SqlHelper.Instance.ExecuteNonQuery(sql, parameters);
             return count;

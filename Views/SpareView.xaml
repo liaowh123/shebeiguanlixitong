@@ -5,9 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:设备管理系统.Views" 
              xmlns:viewmodels="clr-namespace:设备管理系统.ViewModels" 
-             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"            
              mc:Ignorable="d" 
              Background="#F7F8F9" d:DesignHeight="860" d:DesignWidth="1260">
+            
     <UserControl.DataContext>
         <viewmodels:SpareViewModel/>
     </UserControl.DataContext>
@@ -16,6 +17,7 @@
             <i:InvokeCommandAction Command="{Binding LoadedCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
@@ -48,6 +50,7 @@
                 <Grid Grid.Row="1" Margin="25 0 25 0">
                     <DataGrid ItemsSource="{Binding Spares}" 
                           RowStyle="{StaticResource DataGridRowStyle}"
+                          SelectedItem="{Binding Spare}"
                           CellStyle="{StaticResource DataGridCellStyle}"
                           Style="{StaticResource DataGridStyle}">
                         <DataGrid.Columns>
@@ -132,7 +135,6 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-
                             <DataGridTemplateColumn Width="200" Header="操作">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -149,6 +151,40 @@
                                                 Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=DataContext.AddToEquipmentSpare}"
                                                 CommandParameter="{Binding}"
                                                 Style="{StaticResource DataGridButtonStyle}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="200" Header="图片">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <!-- 主按钮：显示图片状态并触发主要操作 -->
+                                            <Button Content="{Binding Picture, Converter={StaticResource PictureButtonContentConverter}}"
+                                                ToolTip="{Binding Picture, Converter={StaticResource PictureToolTipConverter}}"
+                                                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=DataContext.PictureMainCommand}"
+                                                CommandParameter="{Binding}"
+                                                Style="{StaticResource DataGridButtonStyle}"
+                                                Width="80"
+                                                Margin="2,0,2,0"/>
+
+                                            <!-- 修改按钮（仅在已有图片时显示） -->
+                                            <Button Content="✏️" 
+                                                ToolTip="修改图片路径"
+                                                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=DataContext.PictureModifyCommand}"
+                                                CommandParameter="{Binding}"
+                                                Style="{StaticResource DataGridIconButtonStyle}"
+                                                Margin="2,0,2,0"
+                                                Visibility="{Binding Picture, Converter={StaticResource NullToVisibilityConverter}}"/>
+
+                                            <!-- 删除按钮（仅在已有图片时显示） -->
+                                            <Button Content="❌" 
+                                                ToolTip="删除图片路径"
+                                                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=DataContext.PictureDeleteCommand}"
+                                                CommandParameter="{Binding}"
+                                                Style="{StaticResource DataGridIconButtonStyle}"
+                                                Margin="2,0,2,0"
+                                                Visibility="{Binding Picture, Converter={StaticResource NullToVisibilityConverter}}"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>

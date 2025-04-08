@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:设备管理系统.Views" 
         xmlns:viewmodels="clr-namespace:设备管理系统.ViewModels"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
         mc:Ignorable="d" 
         WindowStyle="None"
         AllowsTransparency="True"
