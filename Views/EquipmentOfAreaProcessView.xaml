@@ -48,41 +48,45 @@
                                Foreground="#30394A" 
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"/>
+                        <Button Content="+选择区域" 
+                            Command="{Binding SelectAreaCommand}"
+                            Style="{StaticResource MessageBoxButtonStyle}"
+                            HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,12,119,0"/>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="0" >
                         <TextBlock Text="工序列表" 
                                FontSize="30" 
-                               Margin="25 10 0 0 " 
+                               Margin="-85,10,0,0" 
                                HorizontalAlignment="Left" 
-                               VerticalAlignment="Center"
+                               VerticalAlignment="Top"
                                Foreground="#30394A"/>
                         <Button Content="+选择工序" 
-                            Command="{Binding SelectSubjectCommand}"
+                            Command="{Binding SelecProcessCommand}"
                             Style="{StaticResource MessageBoxButtonStyle}"
-                            HorizontalAlignment="Right" VerticalAlignment="Center" Margin="25 10 25 0"/>
+                            HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,12,135,0"/>
                     </Grid>
                     <Grid Grid.Column="3" Grid.Row="0" >
                         <TextBlock Text="设备列表" 
                         FontSize="30" 
-                        Margin="25 10 0 0 " 
+                        Margin="-87,10,0,0" 
                         HorizontalAlignment="Left" 
-                        VerticalAlignment="Center"
+                        VerticalAlignment="Top"
                         Foreground="#30394A"/>
                         <Button Content="+选择设备" 
-                             Command="{Binding SelectSubjectCommand}"
+                             Command="{Binding SelecEquipmentCommand}"
                              Style="{StaticResource MessageBoxButtonStyle}"
-                             HorizontalAlignment="Right" VerticalAlignment="Center" Margin="25 10 25 0"/>
+                             HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,12,11,0"/>
                     </Grid>
-                    <DataGrid Margin="5" Grid.Column="0" Grid.Row="1"                               
-                          ItemsSource="{Binding Areas}" 
-                          SelectedItem="{Binding Area}"
+                    <DataGrid Margin="5,5,116,5" Grid.Column="0" Grid.Row="1"                               
+                          ItemsSource="{Binding EquipmentOfAreaProcesss}" 
+                          SelectedItem="{Binding EquipmentOfAreaProcess}"
                           RowStyle="{StaticResource DataGridRowStyle}"
                           CellStyle="{StaticResource DataGridCellStyle}"
                           Style="{StaticResource DataGridStyle}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">
                                 <i:InvokeCommandAction Command="{Binding AreaSelectionChangedCommand}"
-                                                   CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=SelectedItem}"/>
+                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=SelectedItem}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                         <DataGrid.Columns>
@@ -99,7 +103,7 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Grid>
-                                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                                            <TextBlock Text="{Binding AreaName}" VerticalAlignment="Center" Margin="10 0 0 0"/>
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -108,9 +112,9 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            
+
                                             <Button Content="删除" 
-                                                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=DataContext.DeleteCommand}"
+                                                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=DataContext.DeleteAreaCommand}"
                                                 CommandParameter="{Binding}"
                                                 Style="{StaticResource DataGridButtonStyle}"/>
                                         </StackPanel>
@@ -119,11 +123,18 @@
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid Margin="5" Grid.Column="1" Grid.Row="1"
-                          ItemsSource="{Binding Details}" 
+                    <DataGrid Margin="309,5,115,5" Grid.Row="1"
+                          ItemsSource="{Binding EquipmentOfAreaProcesss1}" 
+                          SelectedItem="{Binding EquipmentOfAreaProcess1}"
                           RowStyle="{StaticResource DataGridRowStyle}"
                           CellStyle="{StaticResource DataGridCellStyle}"
-                          Style="{StaticResource DataGridStyle}">
+                          Style="{StaticResource DataGridStyle}" Grid.ColumnSpan="2">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding ProcessSelectionChangedCommand}"
+            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=SelectedItem}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                         <DataGrid.Columns>
                             <DataGridTemplateColumn Width="50" Header="序号">
                                 <DataGridTemplateColumn.CellTemplate>
@@ -138,7 +149,7 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Grid>
-                                            <TextBlock Text="{Binding SubjectName}" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                                            <TextBlock Text="{Binding ProcessName}" VerticalAlignment="Center" Margin="10 0 0 0"/>
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -148,7 +159,7 @@
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
                                             <Button Content="删除" 
-                                                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=DataContext.DeleteSubjectCommand}"
+                                                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=DataContext.DeleteProcessCommand}"
                                                 CommandParameter="{Binding}"
                                                 Style="{StaticResource DataGridButtonStyle}"/>
                                         </StackPanel>
@@ -157,11 +168,12 @@
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid Margin="5" Grid.Column="2" Grid.Row="1"
-       ItemsSource="{Binding Details}" 
+                    <DataGrid Margin="313,5,10,5" Grid.Column="1" Grid.Row="1"
+       ItemsSource="{Binding EquipmentOfAreaProcesss2}" 
+       SelectedItem="{Binding EquipmentOfAreaProcess2}"
        RowStyle="{StaticResource DataGridRowStyle}"
        CellStyle="{StaticResource DataGridCellStyle}"
-       Style="{StaticResource DataGridStyle}">
+       Style="{StaticResource DataGridStyle}" Grid.ColumnSpan="2">
                         <DataGrid.Columns>
                             <DataGridTemplateColumn Width="50" Header="序号">
                                 <DataGridTemplateColumn.CellTemplate>
@@ -172,11 +184,20 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Width="200" Header="设备名称">
+                            <DataGridTemplateColumn Width="150" Header="设备名称">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Grid>
-                                            <TextBlock Text="{Binding SubjectName}" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                                            <TextBlock Text="{Binding EquipmentName}" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="200" Header="设备编号">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock Text="{Binding EquipmentNumber}" VerticalAlignment="Center" Margin="10 0 0 0"/>
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -186,7 +207,7 @@
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
                                             <Button Content="删除" 
-                             Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=DataContext.DeleteSubjectCommand}"
+                             Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=DataContext.DeleteEquipmentCommand}"
                              CommandParameter="{Binding}"
                              Style="{StaticResource DataGridButtonStyle}"/>
                                         </StackPanel>

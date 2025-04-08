@@ -6,21 +6,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
+using 设备管理系统.ViewModels;
 
 namespace 设备管理系统.Converter
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class RoleToVisibleConverter : IValueConverter
+    public class AreaToVisibleConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var result = Visibility.Collapsed;
+            var result = Visibility.Visible;
             if (value == null) return result;
-            if (int.TryParse(value.ToString(), out int r))
+            SelectAreaViewModel selectAreaViewModel = new SelectAreaViewModel();
+            foreach (var item in selectAreaViewModel.Areas)
             {
-                result = r == 0 ? Visibility.Visible : Visibility.Collapsed;
+                string r = value.ToString();
+                if (r == item.Name)
+                {
+                    result = Visibility.Hidden;
+                }
             }
 
             return result;

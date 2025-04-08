@@ -8,42 +8,52 @@ namespace 设备管理系统.Models
 {
     public class EquipmentOfAreaProcess :EntityBase
     {
-        private int areaId;
+        private string areaName;
         /// <summary>
         /// 区域Id
         /// </summary>
-        public int AreaId
+        public string AreaName
         {
-            get { return areaId; }
-            set { areaId = value; RaisePropertyChanged(); }
+            get { return areaName; }
+            set { areaName = value; RaisePropertyChanged(); }
         }
 
 
-        private int processId;
+        private string processName;
         /// <summary>
         /// 工序Id
         /// </summary>
-        public int ProcessId
+        public string ProcessName
         {
-            get { return processId; }
-            set { processId = value; RaisePropertyChanged(); }
+            get { return processName; }
+            set { processName = value; RaisePropertyChanged(); }
         }
 
 
-        private int equipmentId;
+        private string equipmentNumber;
         /// <summary>
-        /// 设备Id
+        /// 设备编号
         /// </summary>
-        public int EquipmentId
+        public string EquipmentNumber
         {
-            get { return equipmentId; }
-            set { equipmentId = value; RaisePropertyChanged(); }
+            get { return equipmentNumber; }
+            set { equipmentNumber = value; RaisePropertyChanged(); }
+        }
+
+        private string equipmentName;
+        /// <summary>
+        /// 姓名(种类)
+        /// </summary>
+        public string EquipmentName
+        {
+            get { return equipmentName; }
+            set { equipmentName = value; RaisePropertyChanged(); }
         }
 
 
         private string equipmentComment;
         /// <summary>
-        /// 设备Id
+        /// 设备备注
         /// </summary>
         public string EquipmentComment
         {

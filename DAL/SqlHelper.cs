@@ -25,7 +25,7 @@ namespace 设备管理系统.DAL
         public SqlConnection SqlConnection { get; }
         public SqlHelper()
         {
-            ConnectionString = ConfigurationManager.ConnectionStrings["StudentDBConnectionString"].ConnectionString;
+            ConnectionString = ConfigurationManager.ConnectionStrings["EquipmentDBConnectionString"].ConnectionString;
             SqlConnection = new SqlConnection(ConnectionString);
         }
 

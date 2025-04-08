@@ -10,7 +10,7 @@ namespace 设备管理系统.Models
     {
         private string name;
         /// <summary>
-        /// 姓名
+        /// 姓名(种类)
         /// </summary>
         public string Name
         {

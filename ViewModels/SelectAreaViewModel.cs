@@ -13,13 +13,28 @@ namespace 设备管理系统.ViewModels
 {
     internal class SelectAreaViewModel : ObservableObject
     {
+        
         private AreaService areaService = new AreaService();
+
+        private Area area;
+        /// <summary>
+        /// 当前选中的区域
+        /// </summary>
+        public Area Area
+        {
+            get { return area; }
+            set { area = value; RaisePropertyChanged(); }
+        }
         private List<Area> areas = new List<Area>();
+        /// <summary>
+        /// 所有区域
+        /// </summary>
         public List<Area> Areas
         {
             get { return areas; }
             set { areas = value; RaisePropertyChanged(); }
         }
+
         public ICommand LoadedCommand { get; }
 
         public SelectAreaViewModel()

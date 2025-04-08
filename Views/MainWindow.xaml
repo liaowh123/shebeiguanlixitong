@@ -101,6 +101,18 @@
                                  Content="设备管理" 
                                  Visibility="{Binding AppData.CurrentUser.Role,Converter={StaticResource RoleToVisibleConverter}}"
                                  Style="{StaticResource RadioButtonMenuButtonStyle}" />
+                        <RadioButton x:Name="EquipmentSpareView" 
+                                Click="RadioButton_Click"                                  
+                                Tag="&#xf002;" 
+                                Content="设备备件配置" 
+                                Visibility="{Binding AppData.CurrentUser.Role,Converter={StaticResource RoleToVisibleConverter}}"
+                                Style="{StaticResource RadioButtonMenuButtonStyle}" />
+                        <RadioButton x:Name="SpareView" 
+                                Click="RadioButton_Click"                                  
+                                Tag="&#xf002;" 
+                                Content="仓库备件管理" 
+                                Visibility="{Binding AppData.CurrentUser.Role,Converter={StaticResource RoleToVisibleConverter}}"
+                                Style="{StaticResource RadioButtonMenuButtonStyle}" />
                     </StackPanel>
                 </Border>
 

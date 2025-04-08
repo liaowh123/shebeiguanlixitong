@@ -1,0 +1,165 @@
+﻿<UserControl x:Class="设备管理系统.Views.SpareView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:设备管理系统.Views" 
+             xmlns:viewmodels="clr-namespace:设备管理系统.ViewModels" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d" 
+             Background="#F7F8F9" d:DesignHeight="860" d:DesignWidth="1260">
+    <UserControl.DataContext>
+        <viewmodels:SpareViewModel/>
+    </UserControl.DataContext>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="White" BorderBrush="#ECEEF1" BorderThickness="0 0 0 1">
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Left" Margin="25 0 0 0 " Text="录入设备信息" FontSize="18" Foreground="#30394A" VerticalAlignment="Center"/>
+                <Button Visibility="Collapsed" Command="{Binding InsertCommand}" Content="+ 新增成绩" HorizontalAlignment="Right" Style="{StaticResource ButtonBlueStyle}" Margin="0 0 28 0"/>
+            </DockPanel>
+        </Border>
+        <Border Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" Margin="15">
+                    <TextBlock Text="筛选关键词" FontSize="14" Margin="5" VerticalAlignment="Center"/>
+                    <TextBox Text="{Binding SearchTerm}" Padding="5 5 0 0" FontSize="14"
+                         Width="AUTO" MinWidth="200" Height="30" Margin="5" VerticalAlignment="Center" />
+                    <Button Content="筛选..." 
+                        Command="{Binding Search}"
+                        Style="{StaticResource MessageBoxButtonStyle}" 
+                        FontSize="14" Width="80" Height="30" Margin="5" VerticalAlignment="Center"/>
+                    <Rectangle Width="100"/>
+                    <Button Command="{Binding InsertCommand}" Content="+ 新增备件" HorizontalAlignment="Right" Style="{StaticResource ButtonBlueStyle}" Margin="10 0 28 0"/>
+                </StackPanel>
+                <Grid Grid.Row="1" Margin="25 0 25 0">
+                    <DataGrid ItemsSource="{Binding Spares}" 
+                          RowStyle="{StaticResource DataGridRowStyle}"
+                          CellStyle="{StaticResource DataGridCellStyle}"
+                          Style="{StaticResource DataGridStyle}">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Width="AUTO"  Header="序号">  
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock Text="{Binding Id}" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="AUTO" MaxWidth="250"   Header="物料编号">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock Text="{Binding MaterialCode}" TextWrapping="Wrap" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="100" MaxWidth="250" Header="名称">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock Text="{Binding Name}"  TextWrapping="Wrap" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="100" MaxWidth="250" Header="品牌">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock Text="{Binding Brand}" TextWrapping="Wrap" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="AUTO" MaxWidth="250" Header="规格">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock Text="{Binding Specification}" TextWrapping="Wrap" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="100" Header="现有库存">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock Text="{Binding SpareNumber}" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="100" Header="一级分类">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock Text="{Binding First_level}" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="100" Header="二级分类">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock Text="{Binding Second_level}" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="100" Header="三级分类">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock Text="{Binding Third_level}" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="200" Header="操作">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button Content="修改" 
+                                                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=DataContext.UpdateCommand}"
+                                                CommandParameter="{Binding}"
+                                                Style="{StaticResource DataGridButtonStyle}"/>
+                                            <Button Content="删除" 
+                                                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=DataContext.DeleteCommand}"
+                                                CommandParameter="{Binding}"
+                                                Style="{StaticResource DataGridButtonStyle}"/>
+                                            <Button Content="添加到设备" 
+                                                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path=DataContext.AddToEquipmentSpare}"
+                                                CommandParameter="{Binding}"
+                                                Style="{StaticResource DataGridButtonStyle}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                </Grid>
+                
+
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

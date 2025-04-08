@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="设备管理系统.Views.SelectAreaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:设备管理系统.Views" 
+             xmlns:viewmodels="clr-namespace:设备管理系统.ViewModels" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d" 
+             Background="{StaticResource BgRrush}"
+             Width="800" Height="500">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <UserControl.DataContext>
+        <viewmodels:SelectAreaViewModel/>
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Border BorderThickness="0 0 0 1" BorderBrush="#BCCEC8">
+            <TextBlock x:Name="textblock" Text="标题" FontSize="18" VerticalAlignment="Center" Margin="20 0 0 0"/>
+        </Border>
+        
+        <DataGrid Grid.Row="1" Margin="20 20 20 0" 
+               ItemsSource="{Binding Areas}" 
+               SelectedItem="{Binding Area}"
+               RowStyle="{StaticResource DataGridRowStyle}"
+               CellStyle="{StaticResource DataGridCellStyle}"
+               Style="{StaticResource DataGridStyle}" >
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="50" Header="选择">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <CheckBox Visibility="{Binding Areas.Name,Converter={StaticResource AreaToVisibleConverter}}"
+                                    IsChecked="{Binding IsChecked,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="50" Header="序号">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <TextBlock Text="{Binding Id}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="300" Header="名称">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="200" Header="插入日期">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <TextBlock Text="{Binding InsertDate}" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

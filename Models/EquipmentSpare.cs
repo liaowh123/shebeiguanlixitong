@@ -8,7 +8,15 @@ namespace 设备管理系统.Models
 {
     public class EquipmentSpare : EntityBase
     {
-       
+        private string equipmentname;
+        /// <summary>
+        /// 设备名称
+        /// </summary>
+        public string EquipmentName
+        {
+            get { return equipmentname; }
+            set { equipmentname = value; RaisePropertyChanged(); }
+        }
 
 
         private string name;

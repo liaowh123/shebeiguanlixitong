@@ -21,6 +21,8 @@ namespace 设备管理系统.ViewModels
             get { return equipments; }
             set { equipments = value; RaisePropertyChanged(); }
         }
+
+        
         public ICommand LoadedCommand { get; }
         public ICommand InsertCommand { get; }
         public ICommand UpdateCommand { get; }
@@ -110,6 +112,9 @@ namespace 设备管理系统.ViewModels
         private void OnLoadedCommand()
         {
             Equipments = equipmentService.GetAll();
+            
+            
+            
         }
     }
-}
+}       

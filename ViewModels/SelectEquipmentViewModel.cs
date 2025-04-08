@@ -10,40 +10,41 @@ using 设备管理系统.MVVM;
 
 namespace 设备管理系统.ViewModels
 {
-    internal class SelectProcessViewModel : ObservableObject
+    internal class SelectEquipmentViewModel : ObservableObject
     {
-        private ProcessService processService = new ProcessService();
+        private EquipmentService equipmentService = new EquipmentService();
 
-        private Process process;
+        private Equipment equipment;
         /// <summary>
         /// 当前选中的工序
         /// </summary>
-        public Process Process
+        public Equipment Equipment
         {
-            get { return process; }
-            set { process = value; RaisePropertyChanged(); }
+            get { return equipment; }
+            set { equipment = value; RaisePropertyChanged(); }
         }
 
 
-        private List<Process> processs = new List<Process>();
+        private List<Equipment> equipments = new List<Equipment>();
         /// <summary>
         /// 所有工序
         /// </summary>
-        public List<Process> Processs
+        public List<Equipment> Equipments
         {
-            get { return processs; }
-            set { processs = value; RaisePropertyChanged(); }
+            get { return equipments; }
+            set { equipments = value; RaisePropertyChanged(); }
         }
         public ICommand LoadedCommand { get; }
 
-        public SelectProcessViewModel()
+        public SelectEquipmentViewModel()
         {
             LoadedCommand = new DelegateCommand(OnLoadedCommand);
         }
 
         private void OnLoadedCommand()
         {
-            Processs = processService.GetAll();
+            Equipments = equipmentService.GetAll();
         }
     }
 }
+

@@ -8,11 +8,11 @@ namespace 设备管理系统.Models
 {
     public class Spare : EntityBase
     {
-        private int materialCode;
+        private string materialCode;
         /// <summary>
         /// 物料编号
         /// </summary>
-        public int MaterialCode
+        public string MaterialCode
         {
             get { return materialCode; }
             set { materialCode = value; RaisePropertyChanged(); }
@@ -52,14 +52,14 @@ namespace 设备管理系统.Models
         }
 
 
-        private int number;
+        private int sparenumber;
         /// <summary>
         /// 物料数量
         /// </summary>
-        public int Number
+        public int SpareNumber
         {
-            get { return number; }
-            set { number = value; RaisePropertyChanged(); }
+            get { return sparenumber; }
+            set { sparenumber = value; RaisePropertyChanged(); }
         }
 
 
@@ -74,33 +74,33 @@ namespace 设备管理系统.Models
         }
 
 
-        private int first_level;
+        private string first_level;
         /// <summary>
         /// 一级分类
         /// </summary>
-        public int First_level
+        public string First_level
         {
             get { return first_level; }
             set { first_level = value; RaisePropertyChanged(); }
         }
 
 
-        private int second_level;
+        private string second_level;
         /// <summary>
         /// 二级分类
         /// </summary>
-        public int Second_level
+        public string Second_level
         {
             get { return second_level; }
             set { second_level = value; RaisePropertyChanged(); }
         }
 
 
-        private int third_level;
+        private string third_level;
         /// <summary>
         /// 三级分类
         /// </summary>
-        public int Third_level
+        public string Third_level
         {
             get { return third_level; }
             set { third_level = value; RaisePropertyChanged(); }

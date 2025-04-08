@@ -46,7 +46,7 @@ namespace 设备管理系统.MVVM
             ObjectAction = objectAction;
         }
 
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged;  //用于通知 UI 命令的可执行状态是否发生变化（例如，启用或禁用按钮）。
 
         public bool CanExecute(object parameter)
         {

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace 学生成绩管理系统.Converter
+namespace 设备管理系统.Converter
 {
     public class RoleToTextConverter : IValueConverter
     {

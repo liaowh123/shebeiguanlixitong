@@ -28,11 +28,19 @@ namespace 设备管理系统.BLL
         public List<Equipment> GetAll()
         {
             string sql = @"SELECT [Id] ,[Name] ,[EquipmentNumber],[AssetNumber] ,[InsertDate] ,[Comment] FROM [Equipment]";
+            
             DataSet dataSet = SqlHelper.Instance.ExecuteDataset(sql, null);
             List<Equipment> list = SqlHelper.Instance.DataSetToList<Equipment>(dataSet);
             return list;
         }
 
+        public List<Equipment> GetEquipmentName()
+        {
+            string sql = @"SELECT DISTINCT  [Name] FROM [Equipment]";
+            DataSet dataSet = SqlHelper.Instance.ExecuteDataset(sql, null);
+            List<Equipment> list = SqlHelper.Instance.DataSetToList<Equipment>(dataSet);
+            return list;
+        }
         public int Insert(Equipment entity)
         {
             int count = -1;
@@ -72,5 +80,7 @@ namespace 设备管理系统.BLL
             int count = SqlHelper.Instance.ExecuteNonQuery(sql, parameters);
             return count;
         }
+
+        
     }
 }
