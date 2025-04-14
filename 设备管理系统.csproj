@@ -54,7 +54,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>A044220D5910161087DA8C1E6596586529D03D61</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>2AF4B4D5BD6F899B97E082A714B7E1D0E04B9B74</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>设备管理系统_TemporaryKey.pfx</ManifestKeyFile>
@@ -473,6 +473,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="设备管理系统_TemporaryKey.pfx" />
     <Resource Include="Fonts\FontAwesome.otf" />
     <None Include="Fonts\FontAwesome文档.pdf" />
     <None Include="packages.config" />
