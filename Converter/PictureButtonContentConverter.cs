@@ -8,7 +8,7 @@ using System.Windows.Data;
 
 namespace 设备管理系统.Converter
 {
-    // 图片按钮内容转换器
+    // 图片按钮内容转换器   增加的内容
     public class PictureButtonContentConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

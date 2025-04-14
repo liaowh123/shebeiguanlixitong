@@ -11,7 +11,7 @@ using System.Windows.Media;
 
 namespace 设备管理系统.Converter
 {
-    public class IsLessThanConverter : IMultiValueConverter
+    public class IsLessThanConverter : IMultiValueConverter //该法规的规定
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
