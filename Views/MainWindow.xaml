@@ -86,7 +86,7 @@
                                  Style="{StaticResource RadioButtonMenuButtonStyle}" />
                         <RadioButton x:Name="AreaView" 
                                  Click="RadioButton_Click"                                  
-                                 Tag="&#xf212;" 
+                                 Tag="&#xf1fe;" 
                                  Content="区域管理" 
                                  Visibility="{Binding AppData.CurrentUser.Role,Converter={StaticResource RoleToVisibleConverter}}"
                                  Style="{StaticResource RadioButtonMenuButtonStyle}" />

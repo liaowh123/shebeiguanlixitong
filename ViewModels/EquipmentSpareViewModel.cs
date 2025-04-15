@@ -123,11 +123,13 @@ namespace 设备管理系统.ViewModels
                     equipmentspare.MinNumber = vm.EquipmentSpare.MinNumber;
                     equipmentspare.ProcurementCycle = vm.EquipmentSpare.ProcurementCycle;
                     equipmentspare.SpareNumber = vm.EquipmentSpare.SpareNumber;
+                    equipmentspare.Note = vm.EquipmentSpare.Note;
+                    equipmentspare.Picture = vm.EquipmentSpare.Picture;
                     var count = equipmentspareService.Update(equipmentspare);
                     if (count > 0)
                     {
                         new MessageBox($"操作成功").ShowDialog();
-                        EquipmentSpares = equipmentspareService.GetAll();
+                        EquipmentSpares = equipmentspareService.Where(Equipment);
                     }
                     else
                     {
@@ -156,7 +158,8 @@ namespace 设备管理系统.ViewModels
                     MaxNumber = vm.EquipmentSpare.MaxNumber,
                     MinNumber = vm.EquipmentSpare.MinNumber,
                     ProcurementCycle = vm.EquipmentSpare.ProcurementCycle,
-                    SpareNumber = vm.EquipmentSpare.SpareNumber,                    
+                    SpareNumber = vm.EquipmentSpare.SpareNumber,
+                    Note = vm.EquipmentSpare.Note,
                 };
                 
                 var count = equipmentspareService.Insert(equipmentspare);
@@ -183,6 +186,10 @@ namespace 设备管理系统.ViewModels
             dialogWindow.OnSubmit += (arg) =>
             {
                 var vm = arg as InsertEquipmentSpareViewModel;
+                if (vm.EquipmentSpare.Brand == null)
+                {
+                    vm.EquipmentSpare.Brand = "无";
+                }
                 EquipmentSpare equipmentspare = new EquipmentSpare
                 {
                     EquipmentName = vm.Equipment.Name,
@@ -194,8 +201,9 @@ namespace 设备管理系统.ViewModels
                     MinNumber = vm.EquipmentSpare.MinNumber,
                     ProcurementCycle = vm.EquipmentSpare.ProcurementCycle,
                     SpareNumber = vm.EquipmentSpare.SpareNumber,
+                    Note = vm.EquipmentSpare.Note,
                 };
-
+                
                 var count = equipmentspareService.Insert(equipmentspare);
                 if (count > 0)
                 {

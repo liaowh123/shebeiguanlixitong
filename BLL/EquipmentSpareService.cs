@@ -28,7 +28,7 @@ namespace 设备管理系统.BLL
         public List<EquipmentSpare> GetAll()
         {
             //string sql = @"SELECT [Id],[EquipmentName],[Name],[Brand],[Specification],[AllocationNumber],[MaxNumber],[MinNumber],[ProcurementCycle],[SpareNumber],[Picture],[InsertDate] FROM [EquipmentSpare]";
-            string sql = @"Select e.Id,e.EquipmentName,e.Name ,e.Brand,e.Specification,e.AllocationNumber,e.MaxNumber,e.MinNumber,e.ProcurementCycle,s.SpareNumber ,e.Picture,e.Insertdate   from EquipmentSpare e inner join Spare s on 
+            string sql = @"Select e.Id,e.EquipmentName,e.Name ,e.Brand,e.Specification,e.AllocationNumber,e.MaxNumber,e.MinNumber,e.ProcurementCycle,s.SpareNumber ,e.Picture,e.Note,e.Insertdate   from EquipmentSpare e inner join Spare s on 
                         e.Name = s.Name and e.Brand = s.Brand and e.Specification = s.Specification";
             DataSet dataSet = SqlHelper.Instance.ExecuteDataset(sql, null);
             List<EquipmentSpare> list = SqlHelper.Instance.DataSetToList<EquipmentSpare>(dataSet);
@@ -51,6 +51,7 @@ namespace 设备管理系统.BLL
         t.ProcurementCycle,
         s.SpareNumber AS SpareNumber,  -- 来自Spare表
         t.Picture,
+        t.Note,
         t.Insertdate,
         COUNT(*) OVER (PARTITION BY t.Name, t.Brand, t.Specification) AS 组合计数
     FROM 
@@ -89,7 +90,7 @@ ORDER BY
 
             entity.InsertDate = DateTime.Now;
 
-            string sql = $"Insert Into EquipmentSpare (EquipmentName,Name,Brand,Specification,AllocationNumber,MaxNumber,MinNumber,ProcurementCycle,SpareNumber,Picture,InsertDate) Values (@EquipmentName,@Name,@Brand,@Specification,@AllocationNumber,@MaxNumber,@MinNumber,@ProcurementCycle,@SpareNumber,@Picture,@InsertDate)";
+            string sql = $"Insert Into EquipmentSpare (EquipmentName,Name,Brand,Specification,AllocationNumber,MaxNumber,MinNumber,ProcurementCycle,SpareNumber,Note,Picture,InsertDate) Values (@EquipmentName,@Name,@Brand,@Specification,@AllocationNumber,@MaxNumber,@MinNumber,@ProcurementCycle,@SpareNumber,@Note,@Picture,@InsertDate)";
 
             SqlParameter[] parameters = new SqlParameter[]
             {
@@ -102,6 +103,7 @@ ORDER BY
                 new SqlParameter("@MinNumber", entity.MinNumber),
                 new SqlParameter("@ProcurementCycle", entity.ProcurementCycle),
                 new SqlParameter("@SpareNumber", entity.SpareNumber),
+                new SqlParameter("@Note", entity.Note),
                 new SqlParameter("@Picture", entity.Picture),
                 new SqlParameter("@InsertDate", entity.InsertDate),
             };
@@ -123,6 +125,7 @@ ORDER BY
                                             MinNumber = @MinNumber,
                                             ProcurementCycle = @ProcurementCycle,
                                             SpareNumber = @SpareNumber,
+                                            Note = @Note,
                                             Picture = @Picture
                                             Where Id = @Id";
             SqlParameter[] parameters = new SqlParameter[]
@@ -137,6 +140,7 @@ ORDER BY
                 new SqlParameter("@MinNumber", entity.MinNumber),
                 new SqlParameter("@ProcurementCycle", entity.ProcurementCycle),
                 new SqlParameter("@SpareNumber", entity.SpareNumber),
+                new SqlParameter("@Note", entity.Note),
                 new SqlParameter("@Picture", entity.Picture),
                 
             };
@@ -146,7 +150,7 @@ ORDER BY
 
         public List<EquipmentSpare> Search(string entity)
         {
-            string sql = @"SELECT *FROM (Select e.Id,e.EquipmentName,e.Name ,e.Brand,e.Specification,e.AllocationNumber,e.MaxNumber,e.MinNumber,e.ProcurementCycle,s.SpareNumber ,e.Picture,e.Insertdate   from EquipmentSpare e inner join Spare s on 
+            string sql = @"SELECT *FROM (Select e.Id,e.EquipmentName,e.Name ,e.Brand,e.Specification,e.AllocationNumber,e.MaxNumber,e.MinNumber,e.ProcurementCycle,s.SpareNumber ,e.Note,e.Picture,e.Insertdate   from EquipmentSpare e inner join Spare s on 
                         e.Name = s.Name and e.Brand = s.Brand and e.Specification = s.Specification )a
                            WHERE                               
                                 Name LIKE @SearchTerm1 OR

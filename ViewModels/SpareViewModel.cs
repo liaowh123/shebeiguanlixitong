@@ -131,6 +131,10 @@ namespace 设备管理系统.ViewModels
             dialogWindow.OnSubmit += (arg) =>
             {
                 var vm = arg as InsertSpareViewModel;
+                if (vm.Spare.Brand ==null)
+                {
+                    vm.Spare.Brand = "无";
+                }
                 Spare spare = new Spare
                 {
                     MaterialCode = vm.Spare.MaterialCode,

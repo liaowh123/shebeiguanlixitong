@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:设备管理系统.Views" 
              xmlns:viewmodels="clr-namespace:设备管理系统.ViewModels" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
-             Width="500" Height="400">
+             Width="500" Height="450">
     <UserControl.DataContext>
         <viewmodels:InsertEquipmentSpareViewModel/>
     </UserControl.DataContext>
@@ -22,9 +22,9 @@
         </ComboBox>
         <Label Content="设备名称" Canvas.Left="70" Canvas.Top="39" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <TextBox Canvas.Left="134" TextWrapping="Wrap" Text="{Binding EquipmentSpare.Name,UpdateSourceTrigger=PropertyChanged}" Canvas.Top="68" Width="236" HorizontalAlignment="Center" VerticalAlignment="Top" Height="30"/>
-        <Label Content="备件名称(不能为空)" Canvas.Left="15" Canvas.Top="68" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label Content="备件名称:(不能为空)" Canvas.Left="15" Canvas.Top="68" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <TextBox Canvas.Left="134" TextWrapping="Wrap" Text="{Binding EquipmentSpare.Brand, UpdateSourceTrigger=PropertyChanged}" Canvas.Top="100" Width="236" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <Label Content="品牌" Canvas.Left="68" Canvas.Top="101" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Label Content="品牌:(不能为空）无" Canvas.Left="16" Canvas.Top="101" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <TextBox Canvas.Left="134" TextWrapping="Wrap" Text="{Binding EquipmentSpare.Specification, UpdateSourceTrigger=PropertyChanged}" Canvas.Top="133" Width="236" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Label Content="规格" Canvas.Left="68" Canvas.Top="134" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.545,2.27"/>
         <TextBox Canvas.Left="134" TextWrapping="Wrap" Text="{Binding EquipmentSpare.AllocationNumber, UpdateSourceTrigger=PropertyChanged}" Canvas.Top="166" Width="236" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
@@ -37,7 +37,8 @@
         <Label Content="采购周期" Canvas.Left="68" Canvas.Top="267" RenderTransformOrigin="0.545,2.27" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <TextBox Canvas.Left="134" TextWrapping="Wrap" Text="{Binding EquipmentSpare.SpareNumber, UpdateSourceTrigger=PropertyChanged}" Canvas.Top="299" Width="236" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Label Content="现有库存" Canvas.Left="68" Canvas.Top="300" RenderTransformOrigin="0.545,2.27" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-
+        <TextBox Canvas.Left="134" TextWrapping="Wrap" Text="{Binding EquipmentSpare.Note, UpdateSourceTrigger=PropertyChanged}" Canvas.Top="332" Width="236" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Label Content="备注" Canvas.Left="68" Canvas.Top="333" RenderTransformOrigin="0.545,2.27" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
 
 

@@ -117,6 +117,14 @@ namespace 设备管理系统.Models
             set { picture = value; RaisePropertyChanged(); }
         }
 
-
+        private string note;
+        /// <summary>
+        /// 备注
+        /// </summary>
+        public string Note
+        {
+            get { return note; }
+            set { note = value; RaisePropertyChanged(); }
+        }
     }
 }

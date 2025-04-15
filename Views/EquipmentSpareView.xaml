@@ -35,7 +35,7 @@
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal" Margin="15">
                     <TextBlock Text="筛选设备：" FontSize="14" Margin="5" VerticalAlignment="Center"/>
-                    <ComboBox x:Name="comboBox" Width="236"  DisplayMemberPath="Name" ItemsSource="{Binding Equipments}" SelectedItem="{Binding Equipment }"   Height="29" >
+                    <ComboBox x:Name="comboBox" Width="236" Height="30"  FontSize="16" DisplayMemberPath="Name" ItemsSource="{Binding Equipments}" SelectedItem="{Binding Equipment }"     >
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">
                                 <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}" />
@@ -153,6 +153,15 @@
                                                 </MultiBinding>
                                             </Grid.Background>
                                             <TextBlock Text="{Binding SpareNumber}"  VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="10 0 0 0"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="100" Header="备注">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock Text="{Binding Note}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="10 0 0 0"/>
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>

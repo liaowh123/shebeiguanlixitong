@@ -28,8 +28,8 @@
         <Label Content="最低库存" Canvas.Left="68" Canvas.Top="234" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <TextBox Canvas.Left="134" TextWrapping="Wrap" Text="{Binding EquipmentSpare.ProcurementCycle, UpdateSourceTrigger=PropertyChanged}" Canvas.Top="266" Width="236" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Label Content="采购周期" Canvas.Left="68" Canvas.Top="267" RenderTransformOrigin="0.545,2.27" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <!--<TextBox Canvas.Left="134" TextWrapping="Wrap" Text="{Binding EquipmentSpare.SpareNumber, UpdateSourceTrigger=PropertyChanged}" Canvas.Top="299" Width="236" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <Label Content="现有库存" Canvas.Left="68" Canvas.Top="300" RenderTransformOrigin="0.545,2.27" HorizontalAlignment="Center" VerticalAlignment="Top"/>-->
+        <TextBox Canvas.Left="134" TextWrapping="Wrap" Text="{Binding EquipmentSpare.Note, UpdateSourceTrigger=PropertyChanged}" Canvas.Top="299" Width="236" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Label Content="备注" Canvas.Left="68" Canvas.Top="300" RenderTransformOrigin="0.545,2.27" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         
     </Canvas>
 </UserControl>
