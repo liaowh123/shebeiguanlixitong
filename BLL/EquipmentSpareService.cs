@@ -112,7 +112,7 @@ ORDER BY
             return count;
         }
 
-        public int Update(EquipmentSpare entity)
+        public int Update(EquipmentSpare entity)//增加备注
         {
             if (entity == null) { return -1; }
 

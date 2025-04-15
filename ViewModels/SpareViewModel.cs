@@ -43,7 +43,7 @@ namespace 设备管理系统.ViewModels
 
         public ICommand PictureMainCommand { get; }
         public ICommand PictureModifyCommand { get; }
-        public ICommand PictureDeleteCommand { get; }
+        public ICommand PictureDeleteCommand { get; }//
 
         public SpareViewModel()
         {
