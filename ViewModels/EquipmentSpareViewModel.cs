@@ -33,7 +33,7 @@ namespace 设备管理系统.ViewModels
             set { equipments = value; RaisePropertyChanged(); }
         }
 
-        private Equipment equipment;
+        private Equipment equipment = new Equipment();
         public Equipment Equipment
         {
             get { return equipment; }
@@ -129,6 +129,11 @@ namespace 设备管理系统.ViewModels
                     if (count > 0)
                     {
                         new MessageBox($"操作成功").ShowDialog();
+                        if (Equipment.Name == null )
+                        {
+                            EquipmentSpares = equipmentspareService.GetAll();
+                            return;
+                        }
                         EquipmentSpares = equipmentspareService.Where(Equipment);
                     }
                     else

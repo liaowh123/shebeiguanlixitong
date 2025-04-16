@@ -25,7 +25,7 @@
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Background="White" BorderBrush="#ECEEF1" BorderThickness="0 0 0 1">
             <DockPanel>
-                <TextBlock DockPanel.Dock="Left" Margin="25 0 0 0 " Text="录入设备信息" FontSize="18" Foreground="#30394A" VerticalAlignment="Center"/>
+                <TextBlock DockPanel.Dock="Left" Margin="25 0 0 0 " Text="录入备件信息" FontSize="18" Foreground="#30394A" VerticalAlignment="Center"/>
                 <Button Visibility="Collapsed" Command="{Binding InsertCommand}" Content="+ 新增成绩" HorizontalAlignment="Right" Style="{StaticResource ButtonBlueStyle}" Margin="0 0 28 0"/>
             </DockPanel>
         </Border>

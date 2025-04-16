@@ -67,5 +67,23 @@ namespace 设备管理系统.Views
                 }
             }
         }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (WindowState == WindowState.Maximized)
+            {
+                // 确保窗口不会覆盖任务栏
+                MaxHeight = SystemParameters.WorkArea.Height;
+                MaxWidth = SystemParameters.WorkArea.Width;
+            }
+        }
+
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
+            // 初始设置最大高度不超过工作区域
+            MaxHeight = SystemParameters.WorkArea.Height;
+            MaxWidth = SystemParameters.WorkArea.Width;
+        }
     }
 }

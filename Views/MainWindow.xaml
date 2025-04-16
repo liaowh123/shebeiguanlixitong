@@ -11,7 +11,8 @@
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanResizeWithGrip"
-        Title="{Binding AppData.Name}" Height="950" Width="1600">
+        Title="{Binding AppData.Name}" Height="950" Width="1600"       
+        SizeChanged="Window_SizeChanged">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="90"/>
     </WindowChrome.WindowChrome>
