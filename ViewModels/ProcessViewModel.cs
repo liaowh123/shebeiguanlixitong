@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using 设备管理系统.BLL;
 using 设备管理系统.Models;
-using 学生成绩管理系统.Helper;
+using 设备管理系统.Helper;
 using 设备管理系统.MVVM;
 using 设备管理系统.Views;
 

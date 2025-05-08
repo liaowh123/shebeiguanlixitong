@@ -19,6 +19,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
             <RowDefinition/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Background="White" BorderBrush="#ECEEF1" BorderThickness="0 0 0 1">
             <DockPanel>
@@ -189,6 +190,13 @@
 
 
             </Grid>
+        </Border>
+        <Border Grid.Row="2" Background="White" BorderBrush="#ECEEF1" BorderThickness="0 0 0 1">
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Left" Margin="25 0 0 0 " Text="Num:" FontSize="18" Foreground="#30394A" VerticalAlignment="Center"/>
+                <TextBlock DockPanel.Dock="Left" Margin="25 0 0 0 " Text="{Binding EquipmentSpares.Count}" FontSize="18" Foreground="#30394A" VerticalAlignment="Center"/>
+                <Button Command="{Binding ExportCommand}" Content="导出数据" HorizontalAlignment="Right" Style="{StaticResource ButtonBlueStyle}" Margin="0 0 28 0"/>
+            </DockPanel>
         </Border>
     </Grid>
 </UserControl>

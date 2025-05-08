@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace 学生成绩管理系统.Helper
+namespace 设备管理系统.Helper
 {
     internal class CopyHelper
     {

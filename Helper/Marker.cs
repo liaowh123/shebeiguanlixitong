@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace 学生成绩管理系统.Helper
+namespace 设备管理系统.Helper
 {
     /// <summary>
     /// 遮罩助手

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using 学生成绩管理系统.Helper;
+using 设备管理系统.Helper;
 using 设备管理系统.BLL;
 using 设备管理系统.Models;
 using 设备管理系统.MVVM;
@@ -41,6 +42,7 @@ namespace 设备管理系统.ViewModels
         public ICommand PictureMainCommand { get; }
         public ICommand PictureModifyCommand { get; }
         public ICommand PictureDeleteCommand { get; }//
+        public ICommand ExportCommand { get; }
 
         public SpareViewModel()
         {
@@ -53,6 +55,7 @@ namespace 设备管理系统.ViewModels
             PictureMainCommand = new DelegateCommand<Spare>(ExecutePictureMainCommand);
             PictureModifyCommand = new DelegateCommand<Spare>(ExecutePictureModifyCommand);
             PictureDeleteCommand = new DelegateCommand<Spare>(ExecutePictureDeleteCommand);
+            ExportCommand = new DelegateCommand(OnExportScoreCommand);
         }
 
         private void OnDeleteCommand(Spare spare)
@@ -495,6 +498,32 @@ namespace 设备管理系统.ViewModels
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        //数据导出
+        private void OnExportScoreCommand()
+        {
+            // 定义中文列标题映射
+            var chineseHeaders = new Dictionary<string, string>
+            {
+                { "Id", "Id" },
+                {"MaterialCode", "物料编号" },
+                { "Name", "名称" },
+                { "Brand", "品牌" },
+                { "Specification", "规格" },
+                { "SpareNumber", "现有库存（含所有设备）" },
+                { "First_level", "一级分类" },
+                { "Second_level", "二级分类" },
+                { "Third_level", "三级分类" },            
+            };
+            //  显式指定类型参数为 Spare
+            var result = ExportHelper.ExportArrayToCSV<Spare>(Spares.ToArray(), chineseHeaders); // 将 List 转换为数组
+
+
+            if (result)
+            {
+                new Views.MessageBox($"导出成功").ShowDialog();
+            }
         }
     }
 }

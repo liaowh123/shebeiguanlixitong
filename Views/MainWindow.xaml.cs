@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using 学生成绩管理系统.Helper;
+using 设备管理系统.Helper;
 
 namespace 设备管理系统.Views
 {
@@ -49,7 +49,15 @@ namespace 设备管理系统.Views
         {
             this.Close();
         }
-
+        /// <summary>
+        /// 最小化窗口事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MinimizeButton_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
         private void RadioButton_Click(object sender, RoutedEventArgs e)
         {
             RadioButton button = (RadioButton)sender;

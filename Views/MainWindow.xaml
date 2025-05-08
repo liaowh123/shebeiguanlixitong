@@ -39,6 +39,13 @@
                     </StackPanel>
                     <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 35 0">
                         <TextBlock Margin="10 0 0 0" Text="{Binding AppData.CurrentUser.Name}" FontFamily="/Fonts/#FontAwesome" Foreground="White" FontSize="36" VerticalAlignment="Center"/>
+                        <!-- 添加最小化按钮 -->
+                        <Border WindowChrome.IsHitTestVisibleInChrome="True" Margin="35 0 0 0" BorderThickness="0" BorderBrush="White" Width="50" Height="50" CornerRadius="35">
+                            <TextBlock MouseUp="MinimizeButton_MouseUp" 
+                                Style="{StaticResource TextBlockCloseStyle}"
+                                Text="&#xf2d1;" 
+                                FontFamily="/Fonts/#FontAwesome" />
+                        </Border>
                         <Border WindowChrome.IsHitTestVisibleInChrome="True" Margin="35 0 0 0" BorderThickness="0" BorderBrush="White" Width="50" Height="50" CornerRadius="35">
                             <TextBlock MouseUp="TextBlock_MouseUp" 
                                Style="{StaticResource TextBlockCloseStyle}"

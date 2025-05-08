@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
-using 学生成绩管理系统.Helper;
+using 设备管理系统.Helper;
 using 设备管理系统.BLL;
 using 设备管理系统.Models;
 using 设备管理系统.MVVM;
@@ -56,6 +56,7 @@ namespace 设备管理系统.ViewModels
         public ICommand SelectionChangedCommand { get; }
 
         public ICommand Search { get; }
+        public ICommand ExportCommand { get; }
         public EquipmentSpareViewModel(EquipmentSpare equipmentSpare)
         {
             
@@ -70,6 +71,7 @@ namespace 设备管理系统.ViewModels
             DeleteCommand = new DelegateCommand<EquipmentSpare>(OnDeleteCommand);
             SelectionChangedCommand = new DelegateCommand(OnSelectionChangedCommand);
             Search = new DelegateCommand<EquipmentSpare>(OnSearch);
+            ExportCommand = new DelegateCommand(OnExportScoreCommand);
         }
 
         private void OnSelectionChangedCommand()
@@ -233,6 +235,36 @@ namespace 设备管理系统.ViewModels
         private void OnSearch(EquipmentSpare equipmentSpare)
         {
             EquipmentSpares = equipmentspareService.Search(SearchTerm);
+        }
+
+
+
+        //数据导出
+        private void OnExportScoreCommand()
+        {
+            // 定义中文列标题映射
+            var chineseHeaders = new Dictionary<string, string>
+            {
+                { "EquipmentName", "设备名称" },
+                { "Name", "备件名称" },
+                { "Brand", "品牌" },
+                { "Specification", "规格" },
+                { "AllocationNumber", "配置数量" },
+                { "MaxNumber", "最大库存" },
+                { "MinNumber", "最小库存" },
+                { "ProcurementCycle", "采购周期" },
+                { "SpareNumber", "现有库存（含所有设备）" },
+                { "Note", "备注" }
+                
+            };
+            //  显式指定类型参数为 Spare
+            var result = ExportHelper.ExportArrayToCSV<EquipmentSpare>(EquipmentSpares.ToArray(), chineseHeaders); // 将 List 转换为数组
+
+
+            if (result)
+            {
+                new Views.MessageBox($"导出成功").ShowDialog();
+            }
         }
     }
 }
